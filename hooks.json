@@ -1,0 +1,98 @@
+[
+	{
+		"id": "listbucket",
+		"execute-command": "/etc/webhook/listbucket.sh",
+		"command-working-directory": "/aws/",
+		"include-command-output-in-response": true
+	},
+	{
+		"id": "upload2bucket",
+		"execute-command": "/etc/webhook/upload2bucket.sh",
+		"command-working-directory": "/aws/",
+		"include-command-output-in-response": true,
+		"pass-arguments-to-command": [
+			{
+				"source": "url",
+				"name": "guid"
+			}
+		]
+	},
+	{
+		"id": "clearbucket",
+		"execute-command": "/etc/webhook/clearbucket.sh",
+		"command-working-directory": "/aws/",
+		"include-command-output-in-response": true
+	},
+	{
+		"id": "compress-collection",
+		"execute-command": "/etc/webhook/compress-collection.sh",
+		"command-working-directory": "/data/",
+		"include-command-output-in-response": true,
+		"pass-arguments-to-command": [
+			{
+				"source": "url",
+				"name": "archiveNewName"
+			},
+			{
+				"source": "url",
+				"name": "collectionName"
+			},
+			{
+				"source": "url",
+				"name": "folder"
+			}
+		]
+	},
+	{
+		"id": "decompress-collection",
+		"execute-command": "/etc/webhook/decompress-collection.sh",
+		"command-working-directory": "/data/",
+		"include-command-output-in-response": true,
+		"pass-arguments-to-command": [
+			{
+				"source": "url",
+				"name": "archiveName"
+			}
+		]
+	},
+	{
+		"id": "flat-transform",
+		"execute-command": "/etc/webhook/flat-transform.sh",
+		"command-working-directory": "/data/",
+		"include-command-output-in-response": true,
+		"pass-arguments-to-command": [
+			{
+				"source": "url",
+				"name": "file"
+			}
+		]		
+	},
+	{
+		"id": "flat-metadata",
+		"execute-command": "/etc/webhook/flat-metadata.sh",
+		"command-working-directory": "/data/",
+		"include-command-output-in-response": true,
+		"pass-arguments-to-command": [
+			{
+				"source": "url",
+				"name": "archiveName"
+			}
+		]
+	},
+	{
+		"id": "split-collection",
+		"execute-command": "/etc/webhook/split-collection.sh",
+		"command-working-directory": "/data/",
+		"include-command-output-in-response": true,
+		"pass-arguments-to-command": [
+			{
+				"source": "url",
+				"name": "archiveName"
+			},
+			{
+				"source": "url",
+				"name": "splitSize"
+			}
+		]
+	}
+]
