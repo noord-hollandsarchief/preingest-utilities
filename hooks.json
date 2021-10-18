@@ -2,13 +2,13 @@
 	{
 		"id": "listbucket",
 		"execute-command": "/etc/webhook/listbucket.sh",
-		"command-working-directory": "/aws/",
+		"command-working-directory": "/data/",
 		"include-command-output-in-response": true
 	},
 	{
 		"id": "upload2bucket",
 		"execute-command": "/etc/webhook/upload2bucket.sh",
-		"command-working-directory": "/aws/",
+		"command-working-directory": "/data/",
 		"include-command-output-in-response": true,
 		"pass-arguments-to-command": [
 			{
@@ -20,7 +20,7 @@
 	{
 		"id": "clearbucket",
 		"execute-command": "/etc/webhook/clearbucket.sh",
-		"command-working-directory": "/aws/",
+		"command-working-directory": "/data/",
 		"include-command-output-in-response": true
 	},
 	{
