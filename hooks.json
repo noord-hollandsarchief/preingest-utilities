@@ -94,5 +94,89 @@
 				"name": "splitSize"
 			}
 		]
-	}
+	},
+	{
+		"id": "checksum-md5",
+		"execute-command": "/etc/webhook/checksum-md5.sh",
+		"command-working-directory": "/data/",
+		"include-command-output-in-response": true,
+		"pass-arguments-to-command": [
+			{
+				"source": "url",
+				"name": "file"
+			}
+		]
+	},
+	{
+		"id": "checksum-sha1",
+		"execute-command": "/etc/webhook/checksum-sha1.sh",
+		"command-working-directory": "/data/",
+		"include-command-output-in-response": true,
+		"pass-arguments-to-command": [
+			{
+				"source": "url",
+				"name": "file"
+			}
+		]
+	},
+	{
+		"id": "checksum-sha256",
+		"execute-command": "/etc/webhook/checksum-sha256.sh",
+		"command-working-directory": "/data/",
+		"include-command-output-in-response": true,
+		"pass-arguments-to-command": [
+			{
+				"source": "url",
+				"name": "file"
+			}
+		]
+	},
+	{
+		"id": "checksum-sha224",
+		"execute-command": "/etc/webhook/checksum-sha224.sh",
+		"command-working-directory": "/data/",
+		"include-command-output-in-response": true,
+		"pass-arguments-to-command": [
+			{
+				"source": "url",
+				"name": "file"
+			}
+		]
+	},
+	{
+		"id": "checksum-sha384",
+		"execute-command": "/etc/webhook/checksum-sha384.sh",
+		"command-working-directory": "/data/",
+		"include-command-output-in-response": true,
+		"pass-arguments-to-command": [
+			{
+				"source": "url",
+				"name": "file"
+			}
+		]
+	},
+	{
+		"id": "checksum-sha512",
+		"execute-command": "/etc/webhook/checksum-sha512.sh",
+		"command-working-directory": "/data/",
+		"include-command-output-in-response": true,
+		"pass-arguments-to-command": [
+			{
+				"source": "url",
+				"name": "file"
+			}
+		]
+	},
+		{
+		"id": "export-checksum",
+		"execute-command": "/etc/webhook/export-checksum.sh",
+		"command-working-directory": "/data/",
+		"include-command-output-in-response": true,
+		"pass-arguments-to-command": [
+			{
+				"source": "url",
+				"name": "guid"
+			}
+		]
+	},
 ]

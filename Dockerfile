@@ -53,6 +53,9 @@ RUN 		apk update
 RUN 		apk add --no-cache libxslt
 RUN 		apk add tar
 RUN 		apk add dos2unix
+RUN			apk add perl
+RUN			apk add coreutils
+
 # install glibc compatibility for alpine
 RUN 		apk --no-cache add \
 				binutils \
@@ -87,18 +90,8 @@ VOLUME      ["/etc/webhook"]
 EXPOSE      9000
 
 COPY 		hooks.json /etc/webhook/hooks.json
-COPY		./sh/upload2bucket.sh /etc/webhook/upload2bucket.sh
-COPY		./sh/clearbucket.sh /etc/webhook/clearbucket.sh
-COPY		./sh/listbucket.sh /etc/webhook/listbucket.sh
-COPY		./sh/compress-collection.sh /etc/webhook/compress-collection.sh
-COPY		./sh/decompress-collection.sh /etc/webhook/decompress-collection.sh
-COPY		./sh/flat-transform.sh /etc/webhook/flat-transform.sh
-COPY		./sh/flat-metadata.sh /etc/webhook/flat-metadata.sh
-COPY		./sh/split-collection.sh /etc/webhook/split-collection.sh
-
-COPY		./pwsh/split-collection.ps1 /etc/webhook/split-collection.ps1
-COPY		./pwsh/flat-metadata.ps1 /etc/webhook/flat-metadata.ps1
-COPY		./pwsh/flatten.xsl /etc/webhook/flatten.xsl
+COPY		./sh/ /etc/webhook/
+COPY		./pwsh/ /etc/webhook/
 
 # Copy only the files we need from the previous stage
 COPY 		--from=installer-env ["/opt/microsoft/powershell", "/opt/microsoft/powershell"]
