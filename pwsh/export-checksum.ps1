@@ -13,14 +13,14 @@ try{
         $files = Get-ChildItem -Path $path -Recurse -File | Where { !$_.Name.EndsWith(".opex", [System.StringComparison]::InvariantCultureIgnoreCase) -or $_.Name.EndsWith(".metadata", [System.StringComparison]::InvariantCultureIgnoreCase) -or $_.Name.EndsWith(".mdto.xml", [System.StringComparison]::InvariantCultureIgnoreCase)} 
        
        
-        $dataTable = New-Object System.Data.DataTable("Checksum")        
-        $column = $dataTable.Columns.Add("Bestandslocatie")
-        $column = $dataTable.Columns.Add("MD5")
-        $column = $dataTable.Columns.Add("SHA1")
-        $column = $dataTable.Columns.Add("SHA224")
-        $column = $dataTable.Columns.Add("SHA256")
-        $column = $dataTable.Columns.Add("SHA384")
-        $column = $dataTable.Columns.Add("SHA512")
+        $dataTable = New-Object System.Data.DataTable("checksum")        
+        $column = $dataTable.Columns.Add("fileLocation")
+        $column = $dataTable.Columns.Add("md5")
+        $column = $dataTable.Columns.Add("sha1")
+        $column = $dataTable.Columns.Add("sha224")
+        $column = $dataTable.Columns.Add("sha256")
+        $column = $dataTable.Columns.Add("sha384")
+        $column = $dataTable.Columns.Add("sha512")
         
         foreach($file in $files){
 
@@ -36,27 +36,27 @@ try{
 
             $response = Invoke-WebRequest -Uri $md5Url -Method GET -UseBasicParsing 
             $md5 = $response.Content.Split("  ")
-            $row["MD5"] = $md5[0]
+            $row["md5"] = $md5[0]
             
             $response = Invoke-WebRequest -Uri $sha1Url -Method GET -UseBasicParsing
             $sha1 = $response.Content.Split("  ") 
-            $row["SHA1"] = $sha1[0]
+            $row["sha1"] = $sha1[0]
 
             $response = Invoke-WebRequest -Uri $sha256Url -Method GET -UseBasicParsing
             $sha256 = $response.Content.Split("  ")
-            $row["SHA256"] = $sha256[0]
+            $row["sha256"] = $sha256[0]
 
             $response = Invoke-WebRequest -Uri $sha224Url -Method GET -UseBasicParsing
             $sha224 = $response.Content.Split("  ")
-            $row["SHA224"] = $sha224[0]
+            $row["sha224"] = $sha224[0]
 
             $response = Invoke-WebRequest -Uri $sha384Url -Method GET -UseBasicParsing
             $sha384 = $response.Content.Split("  ")
-            $row["SHA384"] = $sha384[0]
+            $row["sha384"] = $sha384[0]
 
             $response = Invoke-WebRequest -Uri $sha512Url -Method GET -UseBasicParsing
             $sha512 = $response.Content.Split("  ")  
-            $row["SHA512"] = $sha512[0]
+            $row["sha512"] = $sha512[0]
 
             $dataTable.Rows.Add($row)#add and loop next            
         }
