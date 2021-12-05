@@ -42,7 +42,7 @@ RUN 		tar zxf /tmp/linux.tar.gz -C ${PS_INSTALL_FOLDER} -v
 
 
 ######################################################################################
-#	Final image combine webhook (golang) and Powershell
+#	Final image combine webhook (golang) and Powershell and add AWS CLI
 ######################################################################################
 
 FROM        alpine
@@ -56,6 +56,9 @@ RUN 		apk add dos2unix
 RUN			apk add perl
 RUN			apk add coreutils
 
+######################################################################################
+#	Install AWS CLI
+######################################################################################
 # install glibc compatibility for alpine
 RUN 		apk --no-cache add \
 				binutils \
@@ -83,7 +86,9 @@ RUN 		apk --no-cache add \
 				binutils \
 				curl \
 			&& rm -rf /var/cache/apk/*
-			
+######################################################################################
+#	Copy results to image
+######################################################################################			
 COPY        --from=build /usr/local/bin/webhook /usr/local/bin/webhook
 WORKDIR     /etc/webhook
 VOLUME      ["/etc/webhook"]
