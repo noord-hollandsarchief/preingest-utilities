@@ -89,16 +89,6 @@ RUN 		apk --no-cache add \
 			&& rm -rf /var/cache/apk/*
 
 ######################################################################################
-#	 Install Saxan
-######################################################################################
-
-ARG			SAXON_VERSION=10.6
-
-WORKDIR		/usr/src/Saxon-HE
-
-RUN			apk add curl && curl -sL https://repo1.maven.org/maven2/net/sf/saxon/Saxon-HE/${SAXON_VERSION}/Saxon-HE-${SAXON_VERSION}.jar -o Saxon-HE.jar
-
-######################################################################################
 #	Copy results to image
 ######################################################################################
 COPY        --from=build /usr/local/bin/webhook /usr/local/bin/webhook

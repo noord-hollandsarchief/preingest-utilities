@@ -178,21 +178,5 @@
 				"name": "guid"
 			}
 		]
-	},
-	{
-		"id": "xslt-transformation",
-		"execute-command": "/etc/webhook/transformation.sh",
-		"command-working-directory": "/data/",
-		"include-command-output-in-response": true,
-		"pass-arguments-to-command": [
-			{
-				"source": "url",
-				"name": "xsl"
-			},
-			{
-				"source": "url",
-				"name": "xml"
-			}
-		]
 	}
 ]
