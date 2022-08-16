@@ -1,4 +1,4 @@
-# preingest-utilities
+# preingest-utilities ([python variant](https://github.com/noord-hollandsarchief/preingest-mdto-utilities))
 Utilities voor de preingest tool
 
 Bevat webhooks voor o.a. 
@@ -26,6 +26,3 @@ Uiteraard port nummer kan gewijzigd worden naar eigen behoefte. Voor de voorbeel
 - http://localhost:9000/hooks/flat-transform?file={0}
 - http://localhost:9000/hooks/flat-metadata?archiveName={0}
 - http://localhost:9000/hooks/split-collection?archiveName={0}&splitSize={1}
-
-# Docker-compose
-Wordt vervolgd. Tool is nog in ontwikkeling.
