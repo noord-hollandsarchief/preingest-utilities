@@ -1,4 +1,4 @@
-# preingest-utilities ([python variant](https://github.com/noord-hollandsarchief/preingest-mdto-utilities))
+# preingest-utilities (vernieuwd: [REST-API](https://github.com/noord-hollandsarchief/preingest-mdto-utilities) variant in Python)
 Utilities voor de preingest tool
 
 Bevat webhooks voor o.a. 
